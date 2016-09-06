@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity {
 
+    private String marketURL = "market://details?id=com.unscrambler.word.unscrambler";
+    private String playStoreURL = "https://play.google.com/store/apps/details?id=com.unscrambler.word.unscrambler";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +41,19 @@ public class Main2Activity extends AppCompatActivity {
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rate = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.unscrambler.word.unscrambler"));
+                Intent rate = new Intent(Intent.ACTION_VIEW, Uri.parse(marketURL));
                 startActivity(rate);
             }
         });
+
+        Button share = (Button)findViewById(R.id.share);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                shareIt();
+            }
+        });
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -58,6 +69,15 @@ public class Main2Activity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 //        return super.onOptionsItemSelected(item);
+    }
+
+    private void shareIt() {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String text = "Hey, checkout this awesome android app called Word Unscrambler." +
+                " It helps you unscramble almost any scrambled english word. Check it out: " + playStoreURL;
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
 

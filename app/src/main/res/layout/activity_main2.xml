@@ -48,9 +48,23 @@
         android:id="@+id/rate"
         android:background="@color/background_floating_material_dark"
         android:clickable="true"
-        android:layout_marginBottom="67dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="SHARE THIS APP"
+        android:textSize="16.5sp"
+        android:textColor="#ff42959a"
+        android:id="@+id/share"
+        android:background="@color/background_floating_material_dark"
+        android:clickable="true"
+        android:layout_above="@+id/rate"
+        android:layout_alignLeft="@+id/rate"
+        android:layout_alignStart="@+id/rate"
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
